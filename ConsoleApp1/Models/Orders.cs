@@ -8,6 +8,6 @@ namespace ConsoleApp1.Models
     {
         public string CustomerID { get; set; }
         public int OrderID { get; set; }
-        public string TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

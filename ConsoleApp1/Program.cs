@@ -117,15 +117,17 @@ namespace MathAPIConsumer
                 reader.Close();
                 dataStream.Close();
             }
-            var TotalList = JsonSerializer.Deserialize<List<Orders>>(test3, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            foreach (Orders total in TotalList)
-            {
-                Console.WriteLine("****** BİLGİLER ******");
-                Console.WriteLine("CustomerID = " + total.CustomerID);
-                Console.WriteLine("OrderID = " + total.OrderID);
-            }
+            var TotalList = JsonSerializer.Deserialize<Orders>(test3, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             
-            HttpWebRequest request4 = (HttpWebRequest)HttpWebRequest.Create("https://api.apilayer.com/exchangerates_data/convert?to=TRY&from=USD&amount=");
+                Console.WriteLine("****** BİLGİLER ******");
+                Console.WriteLine("CustomerID = " + TotalList.CustomerID);
+                Console.WriteLine("OrderID = " + TotalList.OrderID);
+                
+            
+            
+            
+
+            HttpWebRequest request4 = (HttpWebRequest)HttpWebRequest.Create($"https://api.apilayer.com/exchangerates_data/convert?to=TRY&from=USD&amount={Math.Floor(TotalList.TotalPrice)}");
             request4.Method = "GET";
             request4.Headers.Add("apikey", "Bxf2813K4uCbNFy2Wml0pIkcsAyO283I");
 
